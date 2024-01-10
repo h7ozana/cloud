@@ -1,0 +1,37 @@
+https://www.youtube.com/watch?v=_38dU6GExDo 이거해보기
+
+# 같은 결과 1줄 짧음 / nginx 기본 파일 보존
+#!/bin/bash
+sudo -s
+yum update -y
+yum install docker nginx git -y
+systemctl start nginx docker
+systemctl enable nginx docker
+git clone https://github.com/h7ozana/html
+mv -f /html/* /usr/share/nginx/html
+systemctl restart nginx
+
+# nginx 기본 파일 전체 삭제
+#!/bin/bash
+sudo -s
+yum update -y
+yum install docker nginx git -y
+systemctl start nginx docker
+systemctl enable nginx docker
+rm -rf /usr/share/nginx/html/*
+git clone https://github.com/h7ozana/html
+mv -f /html/* /usr/share/nginx/html
+systemctl restart nginx
+
+# 같은 결과, 대기중인 ami
+ami-06f76f4a6bdb6bba6
+
+우분투..... /var/www/html/
+
+docker build -t testweb .
+
+docker images
+
+docker run -p 8080:80 -d html
+
+docker ps

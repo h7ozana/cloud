@@ -1,0 +1,38 @@
+update-kubeconfig --region ap-northeast-2 --name cluster
+eks update --region ap-northeast-2 --name cluster
+get no #클러스터의 호스트 IP 네임출력
+run testpod --image=nginx
+get po --watch
+
+
+# 쿠버 CLI설치
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.5/bin/windows/amd64/kubectl.exe
+
+
+# EKS Ctl 설치 확인
+https://eksctl.io/installation/
+
+
+- kubectl 설치하기
+
+https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/install-kubectl.html
+
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.20.4/2021-04-12/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+kubectl version --short --client
+
+# 출력
+Client Version: v1.20.4-eks-6b7464
+
+- eksctl 설치하기
+
+https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eksctl.html
+
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+# 출력
+0.66.0
